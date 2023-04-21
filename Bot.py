@@ -21,10 +21,10 @@ async def on_message(message):
 	if message.mention_everyone:
 		return
 	elif client.user.mentioned_in(message):
-		response = openai.ChatCompletion.create(
-			engine="GPT-4",
+		response = openai.ChatCompletion.create( 
+			engine="GPT-3.5",
 			message=[
-			{"role":"system", "content": "You are a navigator, You are fun, bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
+			{"role":"system", "content": "Your Very Stubborn, You are a navigator, You are funny and bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
 			{"role": "user", "content":message.content}
 
 			]
@@ -32,16 +32,4 @@ async def on_message(message):
 		
 		await message.channel.send(response.choice[0].message.content)
 	
-
-#with open ("keys.txt") as f:
-# lines = f.read().split('\n')
-# openai.api_key = lines[0]
-# DISCORD_TOKEN = lines[1]
-
-# f.close()
-
-
-
-#print(response.choice[0].message.content)
-
 client.run(DISCORD_TOKEN)
