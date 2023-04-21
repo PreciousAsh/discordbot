@@ -20,20 +20,21 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+	
 	if message.author == client.user:
 		return
+	
 	if message.mention_everyone:
 		return
-	elif client.user.mentioned_in(message):
-		response = openai.ChatCompletion.create( 
+	
+	elif client.user.mentioned_in(message): 
+		response = openai.ChatCompletion.create(
 			engine="GPT-4",
-			message=[
-			{"role":"system", "content": "Your Very Stubborn, You are a navigator, You are funny and bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
-			{"role": "user", "content":message.content}
-
+			messages=[
+			{"role": "system", "content": "Your Very Stubborn, You are a navigator, You are funny and bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
+			{"role": "user", "content": message.content}
 			]
 		)
-		
-		await message.channel.send(response.choice[0].message.content)
-	
+		await message.channel.send(response.choices[0].message.content)
+
 client.run(DISCORD_TOKEN)
