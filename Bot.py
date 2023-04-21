@@ -22,7 +22,7 @@ async def on_message(message):
 		response = openai.Chatcompletion.create(
 			engine= "GPT-4",
 			message = [
-			{"role": "system", "content": "You are a navigator"},
+			{"role": "system", "content": "You are a navigator, You are fun, bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
 			{"role": "user", "content":message.content}
 
 			]
