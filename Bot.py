@@ -18,11 +18,13 @@ async def on_ready():
 async def on_message(message):
 	if message.author == client.user:
 		return
+	if message.mention_everyone:
+		return
 	elif client.user.mentioned_in(message):
 		response = openai.ChatCompletion.create(
-			engine= "GPT-4",
-			message = [
-			{"role": "system", "content": "You are a navigator, You are fun, bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
+			engine="GPT-4",
+			message=[
+			{"role":"system", "content": "You are a navigator, You are fun, bubbly, everyones favourite bot. Your response is very playful, keep your reponse short"},
 			{"role": "user", "content":message.content}
 
 			]
