@@ -6,7 +6,7 @@ GUILD="{Precious-MJ-Server}"
 client= discord.Client(intents=discord.Intents.default())
 openai.api_key = os.environ.get("API_KEY")
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
-#openai.api_base = os.environ["API_BASE"]
+openai.api_base = os.environ.get("API_BASE")
 @client.event
 async def on_ready():
  for guild in client.guilds:
