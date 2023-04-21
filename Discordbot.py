@@ -28,7 +28,7 @@ async def on_message(message):
 		await message.channel.send(image_url)
 	
 
-with open ("keys.txt") as f:
+with open ("Keys.txt") as f:
  lines = f.read().split('\n')
  openai.api_key = lines[0]
  DISCORD_TOKEN = lines[1]

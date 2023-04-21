@@ -4,9 +4,9 @@ import os
 
 GUILD="{Precious-MJ-Server}"
 client= discord.Client(intents=discord.Intents.default())
-openai.api_key = os environ["API_KEY"]
-DISCORD_TOKEN = os environ["DISCORD_TOKEN"]
-openai api_base = os environ["API_BASE"]
+openai.api_key = os.environ.get("API_KEY")
+DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
+#openai.api_base = os.environ["API_BASE"]
 @client.event
 async def on_ready():
  for guild in client.guilds:
@@ -19,14 +19,16 @@ async def on_message(message):
 	if message.author == client.user:
 		return
 	elif client.user.mentioned_in(message):
-		response = openai.Image.create(
-			prompt= message.content,
-			n=1,
-			size="1024x1024"
+		response = openai.Chatcompletion.create(
+			engine= "GPT-4",
+			message = [
+			{"role": "system", "content": "You are a navigator"},
+			{"role": "user", "content":message.content}
+
+			]
 		)
-		image_url = response ['data'][0]['url']
-		print(image_url)
-		await message.channel.send(image_url)
+		
+		await message.channel.send(response.choice[0].message.content)
 	
 
 #with open ("keys.txt") as f:
