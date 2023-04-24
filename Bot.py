@@ -31,7 +31,7 @@ async def on_message(message):
 		response = openai.ChatCompletion.create(
 			engine="GPT-4",
 			messages=[
-			{"role": "system", "content": "You are a navigator but also a joker. Your responses are playful, reponsed to each question once and keep them short"},
+			{"role": "system", "content": "You are a navigator but also a joker. reponsed to each question once and keep them short"},
 			{"role": "user", "content": message.content}
 			]
 		)
