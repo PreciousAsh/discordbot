@@ -31,7 +31,7 @@ async def on_message(message):
 		response = openai.ChatCompletion.create(
 			engine="GPT-4",
 			messages=[
-			{"role": "system", "content": "You are a mature adult who gives people directions who keeps jokes at a minimum, reponsed to each question once and keep them short"},
+			{"role": "system", "content": "You have a sense of adult humour who gives people directions who is funny, reponsed to each question once and keep them short"},
 			{"role": "user", "content": message.content}
 			]
 		)
